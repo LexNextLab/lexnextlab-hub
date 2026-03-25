@@ -26,7 +26,7 @@ export default function RootLayout({
       className={`${geologica.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col font-sans">
+      <body className="flex min-h-dvh min-w-0 flex-col overflow-x-hidden font-sans">
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

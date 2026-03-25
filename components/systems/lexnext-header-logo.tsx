@@ -5,13 +5,13 @@ import { LN_LOGOS } from "@/lib/brand";
 
 export function LexNextHeaderLogo() {
   return (
-    <div className="relative h-8 w-[min(9.5rem,calc(100vw-8.5rem))] max-w-[9.5rem] shrink-0 sm:h-9 sm:max-w-none sm:w-[10.5rem]">
+    <div className="relative h-7 min-h-[1.75rem] w-full min-w-0 max-w-[7.75rem] sm:h-8 sm:max-w-[9rem] md:h-9 md:max-w-[10.5rem]">
       <Image
         src={LN_LOGOS.horizontalOnLight}
         alt="LexNext Lab"
         fill
         className="object-contain object-left"
-        sizes="(max-width: 640px) 152px, 168px"
+        sizes="(max-width: 480px) 120px, (max-width: 768px) 144px, 168px"
         priority
       />
     </div>

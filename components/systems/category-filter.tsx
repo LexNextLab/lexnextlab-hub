@@ -26,7 +26,7 @@ export function CategoryFilter({ value, onChange, className }: CategoryFilterPro
     >
       <SelectTrigger
         className={cn(
-          "h-10 w-full min-w-[160px] rounded-xl border-border bg-card shadow-sm md:w-[200px]",
+          "h-11 min-w-0 w-full rounded-xl border-border bg-card shadow-sm md:h-10",
           className,
         )}
         aria-label="Categoria"

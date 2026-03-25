@@ -10,7 +10,7 @@ type EmptyStateProps = {
 export function EmptyState({ onClear }: EmptyStateProps) {
   return (
     <div
-      className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-border bg-card/50 px-8 py-20 text-center shadow-sm"
+      className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-border bg-card/50 px-4 py-12 text-center shadow-sm sm:px-8 sm:py-20"
       role="status"
     >
       <div className="mb-4 flex size-14 items-center justify-center rounded-2xl bg-muted">

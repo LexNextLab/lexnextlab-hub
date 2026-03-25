@@ -54,13 +54,13 @@ export function HubHeader({
   onCategoryChange,
 }: HubHeaderProps) {
   return (
-    <header className="sticky top-0 z-50 border-b border-border/80 bg-card/95 shadow-[0_4px_28px_-10px_rgb(32_72_137/0.14)] backdrop-blur-xl supports-[backdrop-filter]:bg-card/88">
-      <div className="mx-auto max-w-7xl px-3 pt-3 pb-3 sm:px-5 sm:pt-4 sm:pb-4 lg:px-8">
+    <header className="sticky top-0 z-50 border-b border-border/80 bg-card/95 pt-[env(safe-area-inset-top)] shadow-[0_4px_28px_-10px_rgb(32_72_137/0.14)] backdrop-blur-xl supports-[backdrop-filter]:bg-card/88">
+      <div className="mx-auto max-w-7xl min-w-0 px-[max(0.75rem,env(safe-area-inset-left))] pt-3 pb-3 pr-[max(0.75rem,env(safe-area-inset-right))] sm:px-5 sm:pt-4 sm:pb-4 lg:px-8">
         <div className="flex flex-col gap-3 sm:gap-4">
           {/* Identidade: mobile = logo + ações; lg = 3 colunas (marca | título | ações) */}
           <div className="grid grid-cols-1 gap-3 lg:grid-cols-[minmax(0,auto)_minmax(0,1fr)_minmax(0,auto)] lg:items-center lg:gap-5">
             <div className="flex min-w-0 items-center justify-between gap-2 lg:justify-start lg:gap-3">
-              <div className="flex min-w-0 items-center gap-2 sm:gap-3">
+              <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3 lg:flex-none">
                 <div
                   className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-md ring-4 ring-primary/[0.14] sm:size-10"
                   aria-hidden
@@ -98,8 +98,8 @@ export function HubHeader({
             <HeaderActions className="hidden lg:flex lg:justify-end" />
           </div>
 
-          <div className="rounded-2xl border border-border/70 bg-muted/25 p-2 shadow-[inset_0_1px_0_rgb(255_255_255/0.65)] sm:p-2.5">
-            <div className="mx-auto flex w-full max-w-4xl flex-col gap-2.5 min-[480px]:flex-row min-[480px]:items-stretch xl:max-w-none xl:flex-row xl:items-center">
+          <div className="min-w-0 overflow-hidden rounded-2xl border border-border/70 bg-muted/25 p-2 shadow-[inset_0_1px_0_rgb(255_255_255/0.65)] sm:p-2.5">
+            <div className="mx-auto flex w-full min-w-0 max-w-4xl flex-col gap-2.5 min-[480px]:flex-row min-[480px]:items-stretch xl:max-w-none xl:flex-row xl:items-center">
               <SearchBar
                 value={search}
                 onChange={onSearchChange}

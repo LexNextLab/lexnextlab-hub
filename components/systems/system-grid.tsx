@@ -33,10 +33,10 @@ export function SystemGrid({
   return (
     <motion.div
       className={cn(
-        "grid",
+        "grid w-full min-w-0",
         single
-          ? "mx-auto w-full max-w-xl grid-cols-1 gap-6"
-          : "grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 md:gap-6 lg:grid-cols-3 2xl:grid-cols-4",
+          ? "mx-auto max-w-xl grid-cols-1 gap-5 sm:gap-6"
+          : "grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 md:gap-6 lg:grid-cols-3 xl:grid-cols-4",
         className,
       )}
       variants={container}

@@ -84,7 +84,7 @@ export function HubClient() {
   return (
     <>
       <HubThreeBackground />
-      <div className="relative z-10 flex min-h-screen flex-col">
+      <div className="relative z-10 flex min-h-[100dvh] min-w-0 flex-col">
       <HubHeader
         search={search}
         onSearchChange={setSearch}
@@ -92,7 +92,7 @@ export function HubClient() {
         onCategoryChange={setCategory}
       />
 
-      <main className="mx-auto w-full min-w-0 max-w-7xl flex-1 px-3 py-6 sm:px-5 sm:py-8 lg:px-8">
+      <main className="mx-auto w-full min-w-0 max-w-7xl flex-1 py-5 pl-[max(0.75rem,env(safe-area-inset-left))] pr-[max(0.75rem,env(safe-area-inset-right))] pb-[max(1.25rem,env(safe-area-inset-bottom))] sm:px-5 sm:py-8 sm:pb-8 lg:px-8">
         {recentSystems.length > 0 && (
           <section className="mb-8" aria-label="Seus últimos acessos">
             <div className="mb-3 flex items-center gap-2 text-sm font-medium text-foreground">
@@ -109,11 +109,13 @@ export function HubClient() {
                     key={s.id}
                     type="button"
                     variant="outline"
-                    className="h-auto shrink-0 flex-col items-stretch rounded-xl border-border bg-card px-4 py-3 text-left shadow-sm"
+                    className="h-auto max-w-[min(100%,16rem)] shrink-0 flex-col items-stretch rounded-xl border-border bg-card px-3 py-2.5 text-left shadow-sm sm:max-w-[18rem] sm:px-4 sm:py-3"
                     onClick={() => handleAccess(s)}
                   >
-                    <span className="font-medium text-foreground">{s.name}</span>
-                    <span className="mt-1 text-xs text-muted-foreground">
+                    <span className="line-clamp-2 text-left text-sm font-medium text-foreground sm:text-base">
+                      {s.name}
+                    </span>
+                    <span className="mt-1 truncate text-xs text-muted-foreground">
                       {s.category}
                     </span>
                   </Button>

@@ -70,7 +70,7 @@ export function SystemCard({
           glareSize={180}
           transitionDuration={500}
         >
-          <div className="relative z-10 flex h-full min-h-0 min-w-0 w-full flex-col p-5 pb-6">
+          <div className="relative z-10 flex h-full min-h-0 min-w-0 w-full flex-col p-4 pb-5 sm:p-5 sm:pb-6">
             <div className="flex items-start justify-between gap-3">
               <div
                 className={cn(
@@ -126,7 +126,7 @@ export function SystemCard({
                 type="button"
                 className="mt-4 min-w-0 text-left focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
               >
-                <h3 className="truncate text-lg font-semibold tracking-tight text-foreground">
+                <h3 className="line-clamp-2 text-pretty text-base font-semibold tracking-tight text-foreground sm:text-lg">
                   {system.name}
                 </h3>
               </TooltipTrigger>
@@ -184,14 +184,14 @@ export function SystemCard({
 
       <Dialog open={aboutOpen} onOpenChange={setAboutOpen}>
         <DialogContent
-          className="max-h-[min(92vh,880px)] max-w-[calc(100%-2rem)] gap-0 overflow-hidden p-0 sm:max-w-3xl"
+          className="max-h-[min(92dvh,880px)] w-[min(100%,calc(100vw-1rem))] max-w-[min(100%,calc(100vw-1rem))] gap-0 overflow-hidden p-0 sm:w-auto sm:max-w-[min(48rem,calc(100vw-2rem))]"
           showCloseButton
         >
-          <DialogHeader className="border-b border-border px-5 py-4 text-left">
-            <DialogTitle className="text-lg font-semibold tracking-tight">
+          <DialogHeader className="border-b border-border px-4 py-3 text-left sm:px-5 sm:py-4">
+            <DialogTitle className="text-pretty pr-6 text-base font-semibold tracking-tight sm:pr-8 sm:text-lg">
               Informações — {system.name}
             </DialogTitle>
-            <p className="text-xs text-muted-foreground">
+            <p className="mt-1 text-xs break-words text-muted-foreground">
               {system.aboutExtended?.badge ?? system.category}
               {accessUrl ? (
                 <>
@@ -200,7 +200,7 @@ export function SystemCard({
                     href={accessUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary underline-offset-4 hover:underline"
+                    className="break-all text-primary underline-offset-4 hover:underline"
                   >
                     {accessUrl.replace(/^https?:\/\//, "")}
                   </a>
@@ -212,10 +212,10 @@ export function SystemCard({
               )}
             </p>
           </DialogHeader>
-          <div className="max-h-[min(70vh,640px)] overflow-y-auto overscroll-contain px-5 py-4">
+          <div className="max-h-[min(65dvh,640px)] overflow-y-auto overscroll-contain px-4 py-3 sm:max-h-[min(70vh,640px)] sm:px-5 sm:py-4">
             <SystemAboutContent system={system} />
           </div>
-          <div className="flex flex-col gap-2 border-t border-border bg-muted/30 px-5 py-4 sm:flex-row sm:justify-end">
+          <div className="flex flex-col gap-2 border-t border-border bg-muted/30 px-4 py-3 sm:flex-row sm:justify-end sm:px-5 sm:py-4">
             <Button
               type="button"
               variant="outline"

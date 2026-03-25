@@ -14,10 +14,10 @@ export function SystemsSkeleton({
   return (
     <div
       className={cn(
-        "grid",
+        "grid w-full min-w-0",
         single
           ? "mx-auto w-full max-w-xl grid-cols-1 gap-6"
-          : "grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 md:gap-6 lg:grid-cols-3 2xl:grid-cols-4",
+          : "grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 md:gap-6 lg:grid-cols-3 xl:grid-cols-4",
         className,
       )}
       aria-hidden
