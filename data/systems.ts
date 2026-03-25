@@ -143,7 +143,7 @@ Entre com o usuário e senha que você recebeu para este sistema.`,
   },
   {
     id: 3,
-    name: "CADASTRO DE LEADSSSSSSS — Bismarchi | Pires",
+    name: "CADASTRO DE LEO — Bismarchi | Pires",
     description:
       "CRM Manual Bismarchi | Pires — guia para preencher o CRM certinho, com funis de vendas e pós-venda, conferência de dados, aviso de leads atrasados, painel de resultados e apoio à Due Diligence.",
     category: "Comercial",
