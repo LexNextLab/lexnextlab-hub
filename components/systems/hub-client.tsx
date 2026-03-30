@@ -14,9 +14,7 @@ import { LexNextHeaderLogo } from "@/components/systems/lexnext-header-logo";
 import { EmptyState } from "@/components/systems/empty-state";
 import { SystemList } from "@/components/systems/system-list";
 import { SystemsSkeleton } from "@/components/systems/systems-skeleton";
-import { useLocalStorage } from "@/lib/hooks/use-local-storage";
 import { useSystemsFilter } from "@/lib/hooks/use-systems-filter";
-import { FAVORITES_KEY } from "@/lib/recent";
 import type { System } from "@/data/systems";
 
 export function HubClient() {
@@ -24,7 +22,6 @@ export function HubClient() {
   const [category, setCategory] = useState("Todas");
   const [hubView, setHubView] = useState<HubMainView>("systems");
   const [loading, setLoading] = useState(true);
-  const [favorites, setFavorites] = useLocalStorage<number[]>(FAVORITES_KEY, []);
 
   useEffect(() => {
     const t = window.setTimeout(() => setLoading(false), 420);
@@ -33,22 +30,9 @@ export function HubClient() {
 
   const filtered = useSystemsFilter(systems, search, category);
 
-  const favoriteSet = useMemo(() => new Set(favorites), [favorites]);
-
   const displaySystems = useMemo(() => {
-    return [...filtered].sort((a, b) => {
-      const af = favoriteSet.has(a.id) ? 0 : 1;
-      const bf = favoriteSet.has(b.id) ? 0 : 1;
-      if (af !== bf) return af - bf;
-      return a.name.localeCompare(b.name, "pt");
-    });
-  }, [filtered, favoriteSet]);
-
-  const toggleFavorite = (id: number) => {
-    setFavorites((prev) =>
-      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id],
-    );
-  };
+    return [...filtered].sort((a, b) => a.name.localeCompare(b.name, "pt"));
+  }, [filtered]);
 
   const handleAccess = (system: System) => {
     const url = system.url?.trim();
@@ -98,8 +82,6 @@ export function HubClient() {
               <SystemList
                 key={gridKey}
                 systems={displaySystems}
-                favoriteIds={favoriteSet}
-                onToggleFavorite={toggleFavorite}
                 onAccess={handleAccess}
               />
             </div>
