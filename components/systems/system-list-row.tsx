@@ -4,12 +4,14 @@ import { useState } from "react";
 import Image from "next/image";
 import { ChevronRight, Info } from "lucide-react";
 import { SystemAboutDialog } from "@/components/systems/system-about-dialog";
+import { Badge } from "@/components/ui/badge";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import type { System } from "@/data/systems";
+import { splitSystemListName } from "@/lib/systems-display";
 import { cn } from "@/lib/utils";
 
 export type SystemListRowProps = {
@@ -26,6 +28,7 @@ export function SystemListRow({
   const [aboutOpen, setAboutOpen] = useState(false);
   const accessUrl = system.url?.trim() ?? "";
   const canAccess = Boolean(accessUrl);
+  const { title, subtitle } = splitSystemListName(system);
 
   return (
     <div className={cn("min-w-0", className)}>
@@ -53,7 +56,7 @@ export function SystemListRow({
           )}
           aria-label={
             canAccess
-              ? `Abrir ${system.name} em nova aba`
+              ? `Abrir ${subtitle ? `${title}, ${subtitle}` : system.name} em nova aba`
               : `${system.name} — link indisponível; solicite o endereço à TI ou gestão.`
           }
         >
@@ -79,9 +82,22 @@ export function SystemListRow({
               )}
             />
           </div>
-          <span className="min-w-0 flex-1 line-clamp-2 text-left text-sm font-semibold tracking-[-0.01em] text-foreground sm:text-[15px]">
-            {system.name}
-          </span>
+          <div className="flex min-w-0 flex-1 flex-col gap-1 text-left">
+            <Badge
+              variant="outline"
+              className="h-5 w-fit max-w-full truncate border-[#204889]/28 bg-[#204889]/[0.07] px-2 py-0 text-[10px] font-semibold tracking-[0.06em] text-[#204889] uppercase shadow-none"
+            >
+              {system.category}
+            </Badge>
+            <span className="line-clamp-2 text-sm font-semibold tracking-[-0.01em] text-foreground sm:text-[15px]">
+              {title}
+            </span>
+            {subtitle ? (
+              <span className="line-clamp-2 text-left text-xs font-normal leading-snug text-muted-foreground sm:text-[13px]">
+                {subtitle}
+              </span>
+            ) : null}
+          </div>
           <ChevronRight
             className="size-5 shrink-0 text-[#204889]/45 opacity-90 transition-transform duration-200 group-hover/row:translate-x-0.5 group-hover/row:text-[#204889]/65"
             aria-hidden

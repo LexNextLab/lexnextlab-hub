@@ -5,15 +5,26 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
+/** Base absoluta para og:image / Twitter — necessário em previews (WhatsApp, etc.) */
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "http://localhost:3000");
+
 const geologica = Geologica({
   variable: "--font-sans",
   subsets: ["latin"],
   display: "swap",
 });
 
+const title = "LexNext Lab | Sistemas internos";
+const description = "Acesso aos sistemas internos do escritório.";
+
 export const metadata: Metadata = {
-  title: "LexNext Lab | Sistemas internos",
-  description: "Acesso aos sistemas internos do escritório.",
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
   applicationName: "LexNext Lab",
   manifest: "/LEXNEXTLAB/site.webmanifest",
   appleWebApp: {
@@ -42,6 +53,26 @@ export const metadata: Metadata = {
       },
     ],
     apple: [{ url: "/LEXNEXTLAB/apple-touch-icon.png", sizes: "180x180" }],
+  },
+  openGraph: {
+    title,
+    description,
+    url: "/",
+    siteName: "LexNext Lab",
+    locale: "pt_BR",
+    type: "website",
+    images: [
+      {
+        url: "/LEXNEXTLAB/LOGO.png",
+        alt: "LexNext Lab",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/LEXNEXTLAB/LOGO.png"],
   },
 };
 
