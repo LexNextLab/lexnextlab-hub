@@ -14,6 +14,8 @@ export const LN_GRADIENT =
 
 /** Logos em /public/LEXNEXTLAB/ — use conforme fundo claro/escuro */
 export const LN_LOGOS = {
+  /** Símbolo (M) — fundo escuro recomendado (traces claros) */
+  mark: "/brand/lexnext-mark.svg",
   /** Fundo claro */
   horizontalOnLight: "/LEXNEXTLAB/LOGO-PRETO-HORIZONTAL.png",
   /** Fundo escuro (wordmark claro) */

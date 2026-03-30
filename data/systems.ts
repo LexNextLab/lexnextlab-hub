@@ -52,7 +52,7 @@ export interface System {
 export const systems: System[] = [
   {
     id: 1,
-    name: "Responsum",
+    name: "Responsum - Abertura e acompanhamento de chamados",
     description:
       "Abertura e acompanhamento de chamados da Controladoria e demais áreas — status, histórico e chat no mesmo lugar.",
     category: "Operações",
@@ -91,7 +91,7 @@ Acesse com seu login corporativo. Pedidos pelo sistema substituem solicitações
   },
   {
     id: 2,
-    name: "Fênix.IA",
+    name: "Fênix.IA - Banco de Teses Jurídicas",
     description:
       "Banco de teses jurídicas do escritório: consultar, redigir e exportar conteúdo, com apoio de IA quando disponível.",
     category: "Jurídico",
@@ -143,7 +143,7 @@ Entre com o usuário e senha que você recebeu para este sistema.`,
   },
   {
     id: 3,
-    name: "CADASTRO DE LEO — Bismarchi | Pires",
+    name: "CADASTRO DE LEAD — Bismarchi | Pires",
     description:
       "CRM Manual Bismarchi | Pires — guia para preencher o CRM certinho, com funis de vendas e pós-venda, conferência de dados, aviso de leads atrasados, painel de resultados e apoio à Due Diligence.",
     category: "Comercial",
@@ -187,7 +187,7 @@ Quem usa: equipe que trabalha com CRM, planilha e acompanhamento de leads. Usuá
   },
   {
     id: 4,
-    name: "SIOE",
+    name: "SIOE - Sistema Integrado de Operações Estratégicas",
     description:
       "Inadimplência, comitê e visão financeira do escritório: clientes em atraso, dashboard, grupos com processos e horas — com perfis admin, financeiro e comitê.",
     category: "Financeiro",

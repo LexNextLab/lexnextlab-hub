@@ -1,13 +1,9 @@
 "use client";
 
-import Link from "next/link";
-import { Bell, LayoutDashboard, ScrollText } from "lucide-react";
 import { LexNextHeaderLogo } from "@/components/systems/lexnext-header-logo";
-import { Button, buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { HubSearchToolbar } from "@/components/systems/hub-search-toolbar";
 import { Badge } from "@/components/ui/badge";
-import { CategoryFilter } from "@/components/systems/category-filter";
-import { SearchBar } from "@/components/systems/search-bar";
+import { cn } from "@/lib/utils";
 
 type HubHeaderProps = {
   search: string;
@@ -16,37 +12,6 @@ type HubHeaderProps = {
   onCategoryChange: (v: string) => void;
 };
 
-function HeaderActions({ className }: { className?: string }) {
-  return (
-    <div className={cn("flex shrink-0 items-center gap-1.5 sm:gap-2", className)}>
-      <Link
-        href="/atualizacoes"
-        className={cn(
-          buttonVariants({ variant: "outline", size: "sm" }),
-          "h-10 gap-1.5 rounded-full border-border/80 bg-card px-3 shadow-sm no-underline",
-        )}
-      >
-        <ScrollText
-          className="size-[18px] text-primary"
-          strokeWidth={1.75}
-          aria-hidden
-        />
-        <span className="hidden sm:inline">Atualizações</span>
-      </Link>
-      <Button
-        type="button"
-        variant="ghost"
-        size="icon"
-        className="size-10 rounded-full text-muted-foreground hover:bg-muted hover:text-foreground"
-        aria-label="Notificações — recurso em breve"
-        title="Central de notificações em breve"
-      >
-        <Bell className="size-[18px]" strokeWidth={1.75} aria-hidden />
-      </Button>
-    </div>
-  );
-}
-
 export function HubHeader({
   search,
   onSearchChange,
@@ -54,64 +19,79 @@ export function HubHeader({
   onCategoryChange,
 }: HubHeaderProps) {
   return (
-    <header className="sticky top-0 z-50 border-b border-border/80 bg-card/95 pt-[env(safe-area-inset-top)] shadow-[0_4px_28px_-10px_rgb(32_72_137/0.14)] backdrop-blur-xl supports-[backdrop-filter]:bg-card/88">
-      <div className="mx-auto max-w-7xl min-w-0 px-[max(0.75rem,env(safe-area-inset-left))] pt-3 pb-3 pr-[max(0.75rem,env(safe-area-inset-right))] sm:px-5 sm:pt-4 sm:pb-4 lg:px-8">
-        <div className="flex flex-col gap-3 sm:gap-4">
-          {/* Identidade: mobile = logo + ações; lg = 3 colunas (marca | título | ações) */}
-          <div className="grid grid-cols-1 gap-3 lg:grid-cols-[minmax(0,auto)_minmax(0,1fr)_minmax(0,auto)] lg:items-center lg:gap-5">
-            <div className="flex min-w-0 items-center justify-between gap-2 lg:justify-start lg:gap-3">
-              <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3 lg:flex-none">
-                <div
-                  className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-md ring-4 ring-primary/[0.14] sm:size-10"
-                  aria-hidden
-                >
-                  <LayoutDashboard
-                    className="size-[16px] sm:size-[18px]"
-                    strokeWidth={2}
-                  />
-                </div>
-                <LexNextHeaderLogo />
-              </div>
-              <HeaderActions className="lg:hidden" />
+    <header
+      className={cn(
+        "relative sticky top-0 z-50 pt-[env(safe-area-inset-top)]",
+        "border-b border-white/[0.08] bg-black/40 shadow-[0_12px_40px_-16px_rgb(0_0_0/0.55)] backdrop-blur-xl backdrop-saturate-150 supports-[backdrop-filter]:bg-black/32",
+      )}
+    >
+      {/* Linha de acento LexNext (azul → verde) — profundidade sem peso visual */}
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#204889]/55 to-[#b0d07a]/50 opacity-90"
+        aria-hidden
+      />
+      <div className="relative mx-auto max-w-7xl min-w-0 px-[max(0.75rem,env(safe-area-inset-left))] pt-4 pb-5 pr-[max(0.75rem,env(safe-area-inset-right))] sm:px-5 sm:pt-5 sm:pb-6 lg:px-8">
+        <div className="flex flex-col gap-5 lg:gap-6">
+          {/* Mobile: marca e título centralizados · Desktop: duas colunas alinhadas à base */}
+          <div
+            className={cn(
+              "flex flex-col gap-4",
+              "items-center text-center",
+              "lg:flex-row lg:items-end lg:justify-between lg:gap-10 lg:text-left",
+            )}
+          >
+            <div
+              className={cn(
+                "mx-auto w-full max-w-[17rem] shrink-0 sm:max-w-[18rem]",
+                "lg:mx-0 lg:max-w-[min(100%,22rem)] lg:flex-1",
+              )}
+            >
+              <LexNextHeaderLogo
+                size="large"
+                variant="onDark"
+                align="responsive"
+              />
             </div>
 
-            <div className="min-w-0 lg:px-2 lg:text-center">
-              <div className="flex flex-wrap items-center gap-x-2 gap-y-1 lg:justify-center">
+            <div className="min-w-0 max-w-xl lg:max-w-[26rem] lg:shrink-0">
+              <div
+                className={cn(
+                  "flex flex-wrap items-center justify-center gap-x-2 gap-y-1",
+                  "lg:justify-end",
+                )}
+              >
                 <h1
-                  className="font-heading text-base font-semibold tracking-tight text-foreground sm:text-lg lg:text-xl"
+                  className="font-heading text-xl font-semibold tracking-[-0.02em] text-white drop-shadow-[0_1px_12px_rgb(0_0_0/0.35)] sm:text-2xl"
                   aria-label="LexNext Lab — sistemas internos do escritório"
                 >
-                  <span className="text-ln-gradient">Hub</span>
+                  <span className="bg-gradient-to-r from-white via-[#f4f7fb] to-[#d2eba0] bg-clip-text text-transparent">
+                    Hub
+                  </span>
                 </h1>
                 <Badge
                   variant="outline"
-                  className="h-5 border-primary/20 bg-primary/[0.04] px-2 font-mono text-[10px] font-medium tracking-[0.14em] text-primary uppercase"
+                  className="h-5 border-[#b0d07a]/35 bg-[#b0d07a]/[0.08] px-2 font-mono text-[10px] font-medium tracking-[0.16em] text-[#e8f4d4] uppercase shadow-[0_0_0_1px_rgb(255_255_255/0.06)_inset]"
                 >
                   interno
                 </Badge>
               </div>
-              <p className="mt-0.5 max-w-prose text-xs leading-snug text-muted-foreground sm:text-[13px] lg:mx-auto">
+              <p
+                className={cn(
+                  "mt-2 max-w-[28ch] text-[13px] leading-relaxed text-white/60 sm:max-w-none sm:text-sm",
+                  "lg:ml-auto lg:text-right",
+                )}
+              >
                 Sistemas e ferramentas do escritório — busca e filtros abaixo.
               </p>
             </div>
-
-            <HeaderActions className="hidden lg:flex lg:justify-end" />
           </div>
 
-          <div className="min-w-0 overflow-hidden rounded-2xl border border-border/70 bg-muted/25 p-2 shadow-[inset_0_1px_0_rgb(255_255_255/0.65)] sm:p-2.5">
-            <div className="mx-auto flex w-full min-w-0 max-w-4xl flex-col gap-2.5 min-[480px]:flex-row min-[480px]:items-stretch xl:max-w-none xl:flex-row xl:items-center">
-              <SearchBar
-                value={search}
-                onChange={onSearchChange}
-                className="min-w-0 flex-1"
-              />
-              <CategoryFilter
-                value={category}
-                onChange={onCategoryChange}
-                className="w-full min-w-0 shrink-0 min-[480px]:w-[min(100%,12.5rem)] xl:w-[200px]"
-              />
-            </div>
-          </div>
+          <HubSearchToolbar
+            search={search}
+            onSearchChange={onSearchChange}
+            category={category}
+            onCategoryChange={onCategoryChange}
+          />
         </div>
       </div>
     </header>

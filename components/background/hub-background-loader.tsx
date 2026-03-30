@@ -1,16 +1,8 @@
 "use client";
 
-import dynamic from "next/dynamic";
+import { HubThreeBackground } from "@/components/background/hub-three-background";
 
-const HubThreeBackground = dynamic(
-  () =>
-    import("@/components/background/hub-three-background").then(
-      (m) => m.HubThreeBackground,
-    ),
-  { ssr: false },
-);
-
-/** Carrega o canvas 3D apenas no cliente (não usar em Server Components com dynamic ssr:false). */
+/** Fundo do hub (CSS); nome legado — antes carregava canvas 3D. */
 export function HubBackgroundLoader() {
   return <HubThreeBackground />;
 }
