@@ -24,16 +24,12 @@ const rowMotion = {
 
 type SystemListProps = {
   systems: System[];
-  favoriteIds: Set<number>;
-  onToggleFavorite: (id: number) => void;
   onAccess: (system: System) => void;
   className?: string;
 };
 
 export function SystemList({
   systems,
-  favoriteIds,
-  onToggleFavorite,
   onAccess,
   className,
 }: SystemListProps) {
@@ -49,12 +45,7 @@ export function SystemList({
       <ul className={listClass} role="list">
         {systems.map((system) => (
           <li key={system.id} className="list-none">
-            <SystemListRow
-              system={system}
-              isFavorite={favoriteIds.has(system.id)}
-              onToggleFavorite={onToggleFavorite}
-              onAccess={onAccess}
-            />
+            <SystemListRow system={system} onAccess={onAccess} />
           </li>
         ))}
       </ul>
@@ -71,12 +62,7 @@ export function SystemList({
     >
       {systems.map((system) => (
         <motion.li key={system.id} variants={rowMotion} className="list-none">
-          <SystemListRow
-            system={system}
-            isFavorite={favoriteIds.has(system.id)}
-            onToggleFavorite={onToggleFavorite}
-            onAccess={onAccess}
-          />
+          <SystemListRow system={system} onAccess={onAccess} />
         </motion.li>
       ))}
     </motion.ul>

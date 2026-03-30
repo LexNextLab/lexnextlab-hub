@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { ChevronRight, Info, Star } from "lucide-react";
+import { ChevronRight, Info } from "lucide-react";
 import { SystemAboutDialog } from "@/components/systems/system-about-dialog";
 import {
   Tooltip,
@@ -14,16 +14,12 @@ import { cn } from "@/lib/utils";
 
 export type SystemListRowProps = {
   system: System;
-  isFavorite: boolean;
-  onToggleFavorite: (id: number) => void;
   onAccess: (system: System) => void;
   className?: string;
 };
 
 export function SystemListRow({
   system,
-  isFavorite,
-  onToggleFavorite,
   onAccess,
   className,
 }: SystemListRowProps) {
@@ -111,36 +107,6 @@ export function SystemListRow({
               <Info className="size-[18px] opacity-85" aria-hidden />
             </TooltipTrigger>
             <TooltipContent side="top">Informações</TooltipContent>
-          </Tooltip>
-
-          <Tooltip>
-            <TooltipTrigger
-              type="button"
-              className={cn(
-                "inline-flex size-10 items-center justify-center rounded-lg text-muted-foreground transition-colors",
-                "hover:bg-muted hover:text-foreground",
-                "focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:outline-none",
-              )}
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                onToggleFavorite(system.id);
-              }}
-              aria-pressed={isFavorite}
-              aria-label={
-                isFavorite ? "Remover dos favoritos" : "Adicionar aos favoritos"
-              }
-            >
-              <Star
-                className={cn(
-                  "size-[18px]",
-                  isFavorite && "fill-primary text-primary",
-                )}
-              />
-            </TooltipTrigger>
-            <TooltipContent side="top">
-              {isFavorite ? "Remover favorito" : "Favoritar"}
-            </TooltipContent>
           </Tooltip>
         </div>
       </div>
