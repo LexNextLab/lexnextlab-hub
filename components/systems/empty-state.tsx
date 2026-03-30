@@ -12,7 +12,7 @@ export function EmptyState({ onClear }: EmptyStateProps) {
   return (
     <div
       className={cn(
-        "flex flex-col items-center justify-center rounded-2xl px-4 py-12 text-center sm:px-8 sm:py-20",
+        "mx-auto flex w-full max-w-xl flex-col items-center justify-center rounded-2xl px-4 py-12 text-center sm:px-8 sm:py-20",
         "border border-white/25 bg-white/[0.97] shadow-[0_12px_40px_-16px_rgb(0_0_0/0.35)] ring-1 ring-black/[0.05]",
       )}
       role="status"

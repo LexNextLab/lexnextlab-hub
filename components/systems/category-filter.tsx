@@ -38,7 +38,8 @@ export function CategoryFilter({
           isHub
             ? [
                 "!h-[3.25rem] min-h-[3.25rem] rounded-none border-0 bg-transparent px-4",
-                "text-sm font-medium text-foreground shadow-none transition-colors duration-200 md:text-[15px]",
+                "lg:!h-[2.65rem] lg:min-h-[2.65rem]",
+                "text-sm font-medium text-foreground shadow-none transition-colors duration-200 md:text-[15px] lg:text-sm",
                 "hover:bg-[rgb(32_72_137/0.04)]",
                 "focus-visible:ring-2 focus-visible:ring-[#204889]/28 focus-visible:ring-offset-0",
               ]

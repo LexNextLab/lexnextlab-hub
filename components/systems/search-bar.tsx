@@ -24,7 +24,8 @@ export function SearchBar({
     <div
       className={cn(
         "relative min-w-0 flex-1",
-        isHub && "flex h-full min-h-[3.25rem] items-stretch",
+        isHub &&
+          "flex h-full min-h-[3.25rem] items-stretch lg:min-h-[2.65rem]",
         className,
       )}
     >
@@ -46,7 +47,8 @@ export function SearchBar({
           isHub
             ? [
                 "h-full min-h-[3.25rem] rounded-none border-0 bg-transparent py-3 pr-4",
-                "pl-12 text-base text-foreground/95 shadow-none transition-[box-shadow] duration-200 md:text-[15px]",
+                "lg:min-h-[2.65rem] lg:py-2.5",
+                "pl-12 text-base text-foreground/95 shadow-none transition-[box-shadow] duration-200 md:text-[15px] lg:text-sm",
                 "placeholder:text-[rgb(32_72_137/0.42)]",
                 "focus-visible:border-0 focus-visible:ring-2 focus-visible:ring-[#204889]/28 focus-visible:ring-offset-0",
               ]

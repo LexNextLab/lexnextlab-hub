@@ -52,7 +52,7 @@ export interface System {
 export const systems: System[] = [
   {
     id: 1,
-    name: "Responsum - Abertura e acompanhamento de chamados",
+    name: "RESPONSUM - Abertura e acompanhamento de chamados",
     description:
       "Abertura e acompanhamento de chamados da Controladoria e demais áreas — status, histórico e chat no mesmo lugar.",
     category: "Operações",
@@ -91,7 +91,7 @@ Acesse com seu login corporativo. Pedidos pelo sistema substituem solicitações
   },
   {
     id: 2,
-    name: "Fênix.IA - Banco de Teses Jurídicas",
+    name: "FÊNIX.IA - Banco de Teses Jurídicas",
     description:
       "Banco de teses jurídicas do escritório: consultar, redigir e exportar conteúdo, com apoio de IA quando disponível.",
     category: "Jurídico",
